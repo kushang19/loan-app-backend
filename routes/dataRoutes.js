@@ -27,7 +27,8 @@ router.get('/data', async (req, res) => {
 
 // ✅ GET - Generate OTP
 router.get('/generate-otp', (req, res) => {
-  const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit OTP
+  // const otp = Math.floor(100000 + Math.random() * 900000).toString(); // 6-digit OTP
+  const otp = Math.floor(1000 + Math.random() * 9000).toString(); // 4-digit OTP
   const expiresAt = Date.now() + 2 * 60 * 1000; // 2 minutes from now
 
   otpStore = { otp, expiresAt };
