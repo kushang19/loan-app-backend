@@ -14,8 +14,14 @@ app.use(express.json());
 const dataRoutes = require('./routes/dataRoutes');
 app.use('/api', dataRoutes);
 
+// Pick DB URI based on environment
+const dbURI =
+  process.env.NODE_ENV === "production"
+    ? process.env.MONGO_URI_PRODUCTION
+    : process.env.MONGO_URI_LOCAL;
+
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(dbURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
